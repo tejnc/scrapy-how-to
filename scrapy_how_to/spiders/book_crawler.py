@@ -16,7 +16,7 @@ class BookCrawler(scrapy.Spider):
         for book in books:
             title = book.xpath('./h3/a/text()').get()
             price = book.xpath('./div[@class="product_price"]/p[@class="price_color"]/text()').get()
-            availability = book.xpath('./div[@class="product_price"]/p[@class="instock availability"]/text()').get()
+            availability = book.xpath('./div[@class="product_price"]/p[@class="instock availability"]/text()').getall()
             image_src = book.xpath('./div[@class="image_container"]/a/img/@src').get()
 
             yield {
